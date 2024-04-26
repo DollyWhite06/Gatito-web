@@ -1,0 +1,89 @@
+<main style="background-color: black;">
+  <style>
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid palevioletred;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid palevioletred;
+      background-color: black;
+    }
+  </style>
+
+<p>
+    <mat-toolbar style="background-color: black;">
+      <span style="color: palevioletred;;">        <h1> Juego gatito</h1>
+      </span>
+      
+    </mat-toolbar>
+  </p>
+  <main class="content2">
+
+    <mat-card class="formulario">
+   <div>
+   <div class="inicioSesion"> 
+       <h1 class="titulo">Mis resultados</h1>
+   </div>
+   </div>
+   <div>
+
+    <section>
+
+       <br>
+    <div >
+       <h3 class="texto"> <a style="color: palevioletred;"> Partidas ganadas</a></h3>
+       <table border="1">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Ganador</th>
+            <th> Perdedor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let partida of partidas_ganadas">
+            <td>{{partida.id}}</td>
+            <td>{{ partida.ganador }}</td>
+            <td>{{ partida.perdedor }}</td>
+        </tbody>
+      </table>
+       <h3 class="texto"> <a style="color: palevioletred;" >Partidas perdidas</a></h3>
+       <table border="1">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Ganador</th>
+            <th> Perdedor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let partida of partidas_perdidas">
+            <td>{{partida.id}}</td>
+            <td>{{ partida.ganador }}</td>
+            <td>{{ partida.perdedor }}</td>
+        </tbody>
+      </table>
+        </div>
+    </section>
+   </div>   
+
+    <div>
+
+    <section>
+
+       <br>
+    <div >
+       <h3 class="texto"> <a style="color: palevioletred;" [routerLink]="['/sala']"> Nueva partida</a></h3>
+       <h3 class="texto"> <a style="color: palevioletred;" [routerLink]="['']" (click)="logout()"> Salir</a></h3>
+        </div>
+    </section>
+   </div>   
+   </mat-card>
+
+
+</main>

@@ -1,0 +1,71 @@
+
+<main style="background-color: black;">
+
+<style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid palevioletred;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid palevioletred;
+      background-color: black;
+    }
+  </style>
+
+<p>
+    <mat-toolbar style="background-color: black;">
+      <span style="color: palevioletred;;">        <h1> Juego gatito</h1>
+      </span>
+      
+    </mat-toolbar>
+  </p>
+<main>
+
+ <main class="content2">
+
+     <mat-card class="formulario">
+    <div>
+    <div class="inicioSesion"> 
+        <h1 class="titulo"> Partidas Ganadas</h1>
+    </div>
+    </div>
+
+     <div>
+
+        <table border="1">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Ganador</th>
+                <th> Perdedor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let partida of partidas_ganadas">
+                <td>{{partida.id}}</td>
+                <td>{{ partida.ganador }}</td>
+                <td>{{ partida.perdedor }}</td>
+            </tbody>
+          </table>
+
+     <section>
+
+
+
+        
+        <br>
+     <div >
+        <h3 class="texto"> <a style="color: palevioletred;" href="sala"> Nueva partida</a></h3>
+        <h3 class="texto"> <a style="color: palevioletred;" href="index"> Salir</a></h3>
+         </div>
+     </section>
+    </div>   
+    </mat-card>
+
+
+</main>
+</main>
