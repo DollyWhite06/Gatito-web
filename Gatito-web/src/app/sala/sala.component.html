@@ -1,0 +1,55 @@
+
+<style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid palevioletred;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid palevioletred;
+      background-color: whitesmoke;
+    }
+  </style>
+
+<p>
+    <mat-toolbar style="background-color: pink;">
+        <span style="color: palevioletred;">Juego gatito</span>
+    </mat-toolbar>
+  </p>
+
+  <main class="content2">
+    <mat-card class="formulario">
+ <h1 class="titulo"> EMPIEZA A JUGAR </h1>
+ <h3 class="texto"> Crea una sala de juego o unete a una </h3>
+<br>
+
+
+  <section>
+    <div >
+   <button class="botones"  mat-flat-button (click)="crear()">Crear</button><br>
+    </div>
+    <br>
+    <div>
+        <button class="botones" mat-flat-button (click)="mostrarTabla()">Unirme</button><br>
+
+    </div>
+    </section>
+    <div id="tablaContainer" style="display: none;" *ngIf="partidas">
+        <table border="1">
+            @for (partida of partidas; track partida) {
+              <tr *ngIf="partida.estado_id == 1">
+                <th>{{partida.id}}</th>
+                <th><button (click)="unirme(partida.id.toString())">
+                  Unirse
+                </button></th>
+              </tr>
+            }
+        </table>
+    </div>
+
+    </mat-card>
+   
+</main>
