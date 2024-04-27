@@ -22,7 +22,7 @@ import { Lobby } from '../interfaces/lobby';
     MatSlideToggle, MatToolbarModule, MatButtonToggleModule, MatCardModule,
     MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule, MatDividerModule, MatButtonModule],
   templateUrl: './game.component.html',
-  styleUrls: './game.component.css'
+  styleUrl: './game.component.css'
 })
 export class GameComponent {
   
