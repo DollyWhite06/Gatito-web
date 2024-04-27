@@ -7,6 +7,6 @@ import { HttpClient, HttpClientModule, provideHttpClient, withInterceptors } fro
 import { miInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync(), importProvidersFrom(HttpClientModule), provideHttpClient(withInterceptors([miInterceptor]))]
+  providers: [provideRouter(routes), provideAnimationsAsync(), importProvidersFrom(HttpClientModule), provideHttpClient(withInterceptors([miInterceptor])), provideAnimationsAsync()]
 
 };
