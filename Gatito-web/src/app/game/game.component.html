@@ -1,56 +1,42 @@
  @if (!loading) {
-    <main> 
-    <p>
-        <mat-toolbar style="background-color: pink;">
-          <span style="color: palevioletred;;">        <h1> Juego gatito</h1>
-          </span>
+
+
+    <main style="background-color: black; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">    <p>
+        <mat-toolbar style="background-color: black;">
+          <span style="color: palevioletred;"><h1>JUEGO GATITO</h1></span>
         </mat-toolbar>
       </p>
-    <div class="container">
-        <h2 style="color: palevioletred;">¡A JUGAR! </h2>
-        <br>
-        <div class="texto"> <h3> Presiona donde deseas atacar </h3> </div><br>
-        
-        
-        
-        
-        <br>
-
-        <div class="texto"> 
-            <h2>Tablero</h2>
+    <div class="row row-guides" style="justify-content: center;">
+        <div class="col"></div>
+        <div class="col guide-col" *ngFor="let col of [0, 1, 2]">
         </div>
-        
-        <table>
-            @for (x of lobby?.tablero1; track x; let index = $index) {
-                <tr>
-                    @for (y of x; track y; let indey = $index) {
-                        <td>
-                            @if (idUser == (lobby?.jugador1 ?? 0).toString()) {
-                                <img [src]="waterTiles[y]" >
-                            } @else {
-                                <img (click)="disparar(index, indey)" style="cursor: pointer;" [src]="y == 2 ? waterTiles[y] : waterTiles[0] " >
-                            }
-                        </td>
-                    }
-                </tr>
-            }
-        </table>
-        
-    
-    <br>
     </div>
-    </main>
+    <div class="row" *ngFor="let row of tiles; let rowIndex=index">
+        <div class="col guide-col"></div>
+        <!-- Asegúrate de que los botones estén dentro de la columna (col) -->
+        <div class="col" *ngFor="let tile of row; let colIndex=index">
+            <!-- Los botones deben estar dentro de la columna (col) -->
+            <button class="btn btn-info"[disabled]="!buttonStates[rowIndex][colIndex]" (click)="handleClick(rowIndex, colIndex)">
+                <img class="img-fluid pixelated" [src]="tile">
+            </button>
+        </div>
+    </div>
     
+    </main>    
 
+
+
+    
  } @else { 
+    <main style="background-color: black;">
+
     <p>
-        <mat-toolbar style="background-color: pink;">
+        <mat-toolbar style="background-color: black;">
           <span style="color: palevioletred;;">        <h1> Juego gatito</h1>
           </span>
           
         </mat-toolbar>
       </p>
-    <main>
     
      <main class="content2">
     

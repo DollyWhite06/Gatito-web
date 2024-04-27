@@ -1,3 +1,4 @@
+<main style="background-color: black;">
 
 <style>
     table {
@@ -10,12 +11,12 @@
       padding: 8px;
       text-align: left;
       border: 1px solid palevioletred;
-      background-color: whitesmoke;
+      background-color: black;
     }
   </style>
 
 <p>
-    <mat-toolbar style="background-color: pink;">
+    <mat-toolbar style="background-color: black;">
         <span style="color: palevioletred;">Juego gatito</span>
     </mat-toolbar>
   </p>
@@ -37,7 +38,7 @@
 
     </div>
     </section>
-    <div id="tablaContainer" style="display: none;" *ngIf="partidas">
+    <div  id="tablaContainer" style="display: none; color: palevioletred;" *ngIf="partidas">
         <table border="1">
             @for (partida of partidas; track partida) {
               <tr *ngIf="partida.estado_id == 1">
@@ -52,4 +53,4 @@
 
     </mat-card>
    
-</main>
+</main> </main>

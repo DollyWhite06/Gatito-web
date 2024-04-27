@@ -16,7 +16,7 @@
 .formulario{
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: pink;
+    background-color: black;
     width: 600px ;
     height: auto;
   }
@@ -25,12 +25,12 @@
       padding-left: 10px;
       padding-right: 10px;
       height: 80px;
-      background-color: pink;
+      background-color: black;
       border: 2px palevioletred;
     }
     .content {
         padding: 20px;
-        background-color: pink;
+        background-color: black;
         border: 2px palevioletred;
 
       }
@@ -46,7 +46,7 @@
       display: block;
        width: 200px;
        height: 50px;
-       background-color: pink;
+       background-color: black;
        border: 2px solid palevioletred;
        color: palevioletred;
        text-align: center;

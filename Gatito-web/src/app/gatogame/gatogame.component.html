@@ -1,0 +1,34 @@
+<main style="background-color: black; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <p>
+      <mat-toolbar style="background-color: black;">
+        <span style="color: palevioletred;"><h1>JUEGO GATITO</h1></span>
+      </mat-toolbar>
+    </p>
+  
+    <div class="row row-guides" style="justify-content: center;">
+      <div class="col"></div>
+      <div class="col guide-col" *ngFor="let col of [0, 1, 2]"></div>
+    </div>
+  
+    <div class="row" *ngFor="let row of tiles; let rowIndex=index">
+      <div class="col guide-col"></div>
+      <div class="col" *ngFor="let tile of row; let colIndex=index">
+        <button class="btn btn-info" [disabled]="!buttonStates[rowIndex][colIndex]" (click)="handleClick(rowIndex, colIndex)">
+          <img class="img-fluid pixelated" [src]="tile">
+        </button>
+      </div>
+    </div>
+  
+    <div class="header">
+      <h1 class="text-center text-orange"  style="color: palevioletred;"  *ngIf="gameService.isGameRunning" [ngClass]="{'text-teal': gameService.activePlayer == 'O'}">
+       TURNO DE :{{ gameService.activePlayer }}
+      </h1>
+      <h1 class="text-center text-grey-darker" *ngIf="!gameService.isGameRunning">Tic-Tac-Toe</h1>
+    </div>
+  
+    <h1 class="text-center text-grey-darker" *ngIf="gameService.winner">{{ gameService.activePlayer }} WON</h1>
+  
+    <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mx-auto block mt-5" *ngIf="gameService.gameOver" (click)="resetGame()">
+      Nuevo juego
+    </button>
+  </main>

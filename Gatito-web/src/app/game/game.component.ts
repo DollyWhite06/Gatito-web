@@ -19,17 +19,22 @@ import { Lobby } from '../interfaces/lobby';
   selector: 'app-game',
   standalone: true,
   imports: [CommonModule, NgIf, NgFor,
-    MatSlideToggle, MatToolbarModule, MatButtonToggleModule, MatCardModule,
-    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule, MatDividerModule, MatButtonModule],
+    MatSlideToggle, MatToolbarModule, 
+    MatButtonToggleModule, MatCardModule,
+    MatFormFieldModule, 
+    MatInputModule,
+     FormsModule, ReactiveFormsModule, 
+     MatIconModule, 
+     MatDividerModule, MatButtonModule],
   templateUrl: './game.component.html',
-  styleUrls: './game.component.css'
+  styleUrl: './game.component.css'
 })
 export class GameComponent {
   
-  waterTiles: string[] = [
-    'assets/fondo.png',
-    'assets/tacha.png',
-    'assets/circulo.png',
+  caTiles: string[] = [
+    '../../assets/background.png',
+    'assets/XX.png',
+    'assets/OO.png',
   ];
 
   loading = true
@@ -87,9 +92,43 @@ export class GameComponent {
     
   }
 
-  //handleClick(rowIndex: number, colIndex: number) {
-  //  this.buttonStates[rowIndex][colIndex] = false;
-  //  const letter = this.getLetterFromIndex(rowIndex);
-  //  this.currentCoordinate = `${letter}${colIndex + 1}`;
-  //}
+ 
+
+ tiles: string[][] = [];
+ buttonStates: boolean[][] = [];
+
+ ngOnInit() {
+   this.initTablero();
+   this.initializeButtonStates();
+
+ }
+
+ initTablero() {
+   this.tableroGatito();
+ }
+
+
+
+ tableroGatito() {
+   for (let i = 0; i < 3; i++) {
+     this.tiles[i] = [];
+     for (let j = 0; j < 3; j++) {
+       this.tiles[i][j] = this.caTiles[0];
+     }
+   }
+ }
+
+ getLetterFromIndex(index: number): string {
+   return String.fromCharCode(65 + index);
+ }
+  initializeButtonStates() {
+   for (let i = 0; i < this.tiles.length; i++) {
+     this.buttonStates[i] = Array(this.tiles[i].length).fill(true);
+   }
+ }
+
+ handleClick(rowIndex: number, colIndex: number) {
+   this.buttonStates[rowIndex][colIndex] = false;
+ }
+
 }

@@ -7,13 +7,13 @@
 .row {
     display: flex;
     flex-direction: row;
-    padding: 0;
+    padding: 90;
 }
 
 .col {
-    margin: 2px;
-    padding: 0;
-    width: 64px;
+    margin: 9px;
+    padding: 2;
+    width: 80px;
     flex: none;
 }
 

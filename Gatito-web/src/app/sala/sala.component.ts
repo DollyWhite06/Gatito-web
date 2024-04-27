@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { AuthService } from '../servicios/auth.service';
 import Pusher from 'pusher-js';
+import { NewPartidaGato } from '../interfaces/new-partida-gato';
 @Component({
   selector: 'app-sala',
   standalone: true,
@@ -20,7 +21,7 @@ import Pusher from 'pusher-js';
 })
 export class SalaComponent {
 
-  partidas: NewPartida[] = []
+  partidas: NewPartidaGato[] = []
 
   constructor(protected activatedRoute: ActivatedRoute, protected authService: AuthService,private newPartidaservice: NewPartidaService, protected websocket: WebsocketService,
     protected router: Router) {
@@ -49,7 +50,7 @@ export class SalaComponent {
   disponibles()
   {
     let self  = this
-    this.newPartidaservice.index().subscribe({
+    this.newPartidaservice.gatoIndex().subscribe({
       next(value){
         self.partidas = value
       }
@@ -58,7 +59,7 @@ export class SalaComponent {
 
   unirme(id: string) {
     let self = this
-    this.newPartidaservice.venga(id).subscribe({
+    this.newPartidaservice.gatoVenga(id).subscribe({
       next(value) {
         self.router.navigate(['/game/' + id])
         console.log("id")
@@ -70,7 +71,7 @@ export class SalaComponent {
 
   crear() {
     let self = this
-    this.newPartidaservice.partidate().subscribe({
+    this.newPartidaservice.gatoPartida().subscribe({
       next(value) {
         self.router.navigate(['/game/' + value.id])
       },

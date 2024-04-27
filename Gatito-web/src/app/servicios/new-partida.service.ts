@@ -5,6 +5,7 @@ import { Observable, from } from 'rxjs';
 import { LoginService } from './login.service';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { NewPartidaGato } from '../interfaces/new-partida-gato';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,19 @@ export class NewPartidaService {
   venga(id: string): Observable<any> {
     return this.http.put<NewPartida[]>("http://127.0.0.1:8000/api/partida/join/" + id, undefined)
   }
+
+  gatoPartida(): Observable<NewPartidaGato> {
+    return this.http.post<NewPartidaGato>("http://127.0.0.1:8000/api/gato/partida", undefined)
+  }
+
+  gatoIndex(): Observable<NewPartidaGato[]> {
+    return this.http.get<NewPartidaGato[]>("http://127.0.0.1:8000/api/partidasDisponibles")
+  }
+
+  gatoVenga(id: string): Observable<any> {
+    return this.http.put<NewPartidaGato[]>("http://127.0.0.1:8000/api/gato/partida/join/" + id, undefined)
+  }
+
+
 
 }
