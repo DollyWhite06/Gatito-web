@@ -3,5 +3,5 @@ export interface NewPartida {
     usuario_id: number
     invitado_id: number
     estado_id: number,
-    lobby_id: string
+    gato_id: string
 }

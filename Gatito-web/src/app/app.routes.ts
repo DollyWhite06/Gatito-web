@@ -14,6 +14,7 @@ import { autentificateGuard } from './guardias/autentificate.guard';
 export const routes: Routes = [
 
     {path: '', component: IndexComponent},
+    {path: 'game', component: GameComponent},
     {path: 'game/:id', component: GameComponent, canActivate: [autentificateGuard]},
     {path: 'login', component: LoginComponent},
     {path: 'partida', component: PartidaComponent, canActivate: [autentificateGuard]},

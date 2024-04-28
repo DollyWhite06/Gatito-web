@@ -14,6 +14,7 @@ import { WebsocketService } from '../servicios/websocket.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LobbyService } from '../servicios/lobby.service';
 import { Lobby } from '../interfaces/lobby';
+import { Gato } from '../interfaces/gato';
 
 @Component({
   selector: 'app-game',
@@ -33,7 +34,7 @@ export class GameComponent {
   ];
 
   loading = true
-  lobby: Lobby | undefined
+  gato: Gato | undefined
   id: string
   idUser: string
 
@@ -54,12 +55,12 @@ export class GameComponent {
     let self = this
     this.lobbyService.show(this.id).subscribe({
       next(value) {
-        self.lobby = value
-        if (self.lobby.jugador2 != null) {
+        self.gato = value
+        if (self.gato.jugadorX != null) {
           self.loading = false
         }
-        if (self.lobby.ganador != null) {
-          if (self.lobby.ganador.toString() == self.idUser) {
+        if (self.gato.ganador != null) {
+          if (self.gato.ganador.toString() == self.idUser) {
             alert("GANASTE!")
             self.router.navigate(['/results'])
           } else {
@@ -72,12 +73,12 @@ export class GameComponent {
   }
 
   disparar(rowIndex: number, colIndex: number) {
-    if (this.lobby && this.lobby.turno.toString() == this.idUser) {
+    if (this.gato && this.gato.turno.toString() == this.idUser) {
       let self = this
       this.lobbyService.atacon(this.id, {rowIndex: rowIndex, colIndex: colIndex}).subscribe({
         next(value) {
           console.log(value)
-          self.lobby = value
+          self.gato = value
         },
       })
 

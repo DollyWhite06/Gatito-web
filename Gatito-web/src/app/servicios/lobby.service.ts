@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Lobby } from '../interfaces/lobby';
+import { Gato } from '../interfaces/gato';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ import { Lobby } from '../interfaces/lobby';
 export class LobbyService {
   constructor(private http: HttpClient, private authService: AuthService, protected router: Router) { }
 
-  show(id: string): Observable<Lobby> {
-    return this.http.get<Lobby>("http://127.0.0.1:8000/api/lobby/" + id)
+  show(id: string): Observable<Gato> {
+    return this.http.get<Gato>("http://127.0.0.1:8000/api/gato/" + id)
   }
   
-  atacon(id: string, data: any): Observable<Lobby> {
-    return this.http.put<Lobby>("http://127.0.0.1:8000/api/lobby/" + id, data)
+  atacon(id: string, data: any): Observable<Gato> {
+    return this.http.put<Gato>("http://127.0.0.1:8000/api/gato/" + id, data)
   }
 
 

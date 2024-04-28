@@ -13,7 +13,7 @@ export class NewPartidaService {
   constructor(private http: HttpClient, private authService: AuthService, protected router: Router) { }
 
   partidate(): Observable<NewPartida> {
-    return this.http.post<NewPartida>("http://127.0.0.1:8000/api/partida", undefined)
+    return this.http.post<NewPartida>("http://127.0.0.1:8000/api/gato/partida", undefined)
   }
 
   index(): Observable<NewPartida[]> {
@@ -21,7 +21,7 @@ export class NewPartidaService {
   }
 
   venga(id: string): Observable<any> {
-    return this.http.put<NewPartida[]>("http://127.0.0.1:8000/api/partida/join/" + id, undefined)
+    return this.http.put<NewPartida[]>("http://127.0.0.1:8000/api/gato/partida/join/" + id, undefined)
   }
 
 }
