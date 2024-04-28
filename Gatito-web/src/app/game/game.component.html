@@ -21,20 +21,16 @@
         </div>
         
         <table>
-            @for (x of gato?.tablero1; track x; let index = $index) {
-                <tr>
-                    @for (y of x; track y; let indey = $index) {
-                        <td>
-                            @if (idUser == (gato?.jugadorO ?? 0).toString()) {
-                                <img [src]="waterTiles[y]" >
-                            } @else {
-                                <img (click)="disparar(index, indey)" style="cursor: pointer;" [src]="y == 2 ? waterTiles[y] : waterTiles[0] " >
-                            }
-                        </td>
-                    }
-                </tr>
-            }
-        </table>
+            <tr *ngFor="let row of gato?.tablero1; let rowIndex = index">
+              <td *ngFor="let cell of row; let colIndex = index">
+                <img
+                  (click)="dibujar(rowIndex, colIndex)"
+                  style="cursor: pointer;"
+                  [src]="cell === 1 ? catTiles[1] : cell === 2 ? catTiles[2] : catTiles[0]"
+                >
+              </td>
+            </tr>
+          </table>
         
     
     <br>

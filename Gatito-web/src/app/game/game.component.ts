@@ -27,11 +27,12 @@ import { Gato } from '../interfaces/gato';
 })
 export class GameComponent {
   
-  waterTiles: string[] = [
-    'assets/fondo.png',
-    'assets/tacha.png',
-    'assets/circulo.png',
+  catTiles: string[] = [
+    '../../assets/fondo.png',
+    '../../assets/xx.png',
+    '../../assets/oo.png',
   ];
+  
 
   loading = true
   gato: Gato | undefined
@@ -72,7 +73,7 @@ export class GameComponent {
     })
   }
 
-  disparar(rowIndex: number, colIndex: number) {
+  dibujar(rowIndex: number, colIndex: number) {
     if (this.gato && this.gato.turno.toString() == this.idUser) {
       let self = this
       this.lobbyService.atacon(this.id, {rowIndex: rowIndex, colIndex: colIndex}).subscribe({
