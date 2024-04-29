@@ -7,6 +7,17 @@
         </mat-toolbar>
       </p>
     <div class="container">
+        
+        @if (idUser == gato?.jugadorO?.toString())
+        {
+            <h1 style="color: palevioletred;">ERES O</h1>
+            <br>
+        }
+        @else {
+            <h1 style="color: palevioletred;">ERES X</h1>
+            <br>
+        }
+
         @if (gato?.turno == gato?.jugadorO) {
             <h1 style="color: palevioletred;">TURNO DE O</h1>
         }

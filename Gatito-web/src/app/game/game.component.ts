@@ -88,6 +88,12 @@ export class GameComponent {
             self.router.navigate(['/results'])
           }
         }
+
+        if(self.gato.empate)
+          {
+            alert("¡Empate! Nadie gana esta ronda")
+            self.router.navigate(['/results'])
+          }
       },
     })
   }
