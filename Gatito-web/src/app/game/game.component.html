@@ -7,18 +7,15 @@
         </mat-toolbar>
       </p>
     <div class="container">
-        <h2 style="color: palevioletred;">¡A JUGAR! </h2>
+        @if (gato?.turno == gato?.jugadorO) {
+            <h1 style="color: palevioletred;">TURNO DE O</h1>
+        }
+        @else {
+            <h1 style="color: palevioletred;">TURNO DE X</h1>
+        }
         <br>
-        <div class="texto"> <h3> Presiona donde deseas atacar </h3> </div><br>
-        
-        
-        
         
         <br>
-
-        <div class="texto"> 
-            <h2>Tablero</h2>
-        </div>
         
         <table>
             <tr *ngFor="let row of gato?.tablero1; let rowIndex = index">

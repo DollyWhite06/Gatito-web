@@ -15,6 +15,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LobbyService } from '../servicios/lobby.service';
 import { Lobby } from '../interfaces/lobby';
 import { Gato } from '../interfaces/gato';
+import { OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -33,23 +35,40 @@ export class GameComponent {
     '../../assets/oo.png',
   ];
   
-
   loading = true
   gato: Gato | undefined
   id: string
   idUser: string
-
+  private canalDibujoSubscription: Subscription | undefined;
+  
   constructor(protected websocket: WebsocketService, protected router: Router, protected lobbyService: LobbyService,
     protected activatedRoute: ActivatedRoute
   ) {
     let self = this
     this.id = this.activatedRoute.snapshot.params['id']
     this.idUser = localStorage.getItem('id') ?? "0"
-    var canalsito = this.websocket.pusher.subscribe('my-channel');
-    canalsito.bind('my-event', function(data: any) {
+    var canalDibujo =  this.websocket.pusher.subscribe(`my-channel-${this.id}`)
+
+    canalDibujo.bind('my-event',function(data:any){
       self.check()
     })
     self.check()
+  }
+
+
+  justShow()
+  {
+    let self = this
+    this.lobbyService.show(this.id).subscribe(
+      {
+        next(value) {
+          self.gato = value
+          if (self.gato.jugadorX != null) {
+            self.loading = false
+          }
+        }
+      }
+    )
   }
 
   check() {
@@ -62,10 +81,10 @@ export class GameComponent {
         }
         if (self.gato.ganador != null) {
           if (self.gato.ganador.toString() == self.idUser) {
-            alert("GANASTE!")
+            alert("¡Ganaste!")
             self.router.navigate(['/results'])
           } else {
-            alert("PERDISTE!")
+            alert("¡Perdiste!")
             self.router.navigate(['/results'])
           }
         }
@@ -88,6 +107,7 @@ export class GameComponent {
     }
     
   }
+  
 
   //handleClick(rowIndex: number, colIndex: number) {
   //  this.buttonStates[rowIndex][colIndex] = false;

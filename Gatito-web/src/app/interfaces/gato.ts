@@ -4,4 +4,5 @@ export interface Gato {
     jugadorX: number
     turno: number
     ganador: number
+    empate: boolean
 }
